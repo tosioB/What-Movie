@@ -1,0 +1,39 @@
+@use "@/assets/_variables.scss" as var;
+
+.header {
+  display: flex;
+  align-items: center;
+  height: var.$header-height;
+  border-bottom: 1px solid;
+  border-color: var.$border-color;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    .logo {
+      width: 18rem;
+      margin-right: 8rem;
+      > a {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .gnb {
+      > ul {
+        display: flex;
+        gap: 4rem;
+        > li {
+          > a {
+            font-size: 1.8rem;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}
