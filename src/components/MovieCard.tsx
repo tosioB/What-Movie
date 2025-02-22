@@ -21,7 +21,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             ) : (
               <div className="no-overview">
                 <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />
-                <p>영화 설명이 없습니다.</p>
+                <p>영화 설명이 없습니다.연결 재 테스트</p>
               </div>
             )}
           </div>
