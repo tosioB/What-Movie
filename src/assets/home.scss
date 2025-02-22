@@ -1,0 +1,100 @@
+@use "@/assets/_variables.scss" as var;
+
+.home-page {
+  // 영화 아카이브
+  .movie-archive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    .movie-card {
+      width: calc((100% - 3 * 4rem) / 4);
+      position: relative;
+      .img-box {
+        display: block;
+        aspect-ratio: 2 / 3;
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .movie-detail {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 2.8rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        .title {
+          padding-bottom: 1.2rem;
+          font-size: 2rem;
+          font-weight: 700;
+          text-align: center;
+          word-break: keep-all;
+          border-bottom: 1px solid;
+          border-color: var.$border-color;
+        }
+        .overview {
+          flex: 1;
+          padding: 2rem 0;
+          font-size: 1.6rem;
+          line-height: 1.5;
+          text-align: center;
+          word-break: keep-all;
+          overflow: hidden;
+          position: relative;
+          /* 페이드 효과 (아래에서 천천히 사라짐) */
+          mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          .no-overview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            height: 100%;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var.$fail-color;
+          }
+        }
+        .bottom-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-top: 1.2rem;
+          border-top: 1px solid;
+          border-color: var.$border-color;
+          .average {
+            padding-left: 2.2rem;
+
+            font-size: 1.8rem;
+            font-weight: 500;
+            background: url("/images/star.svg") no-repeat 0 50%;
+          }
+        }
+        &:hover {
+          opacity: 1;
+          transition: opacity 0.3s;
+        }
+      }
+    }
+    .load-more {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
