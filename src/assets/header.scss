@@ -1,11 +1,18 @@
 @use "@/assets/_variables.scss" as var;
 
 .header {
+  position: sticky;
+  // top: 0;
+  // left: 0;
+  top: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   height: var.$header-height;
-  border-bottom: 1px solid;
-  border-color: var.$border-color;
+  background-color: var.$background-color;
+  // border-bottom: 1px solid;
+  // border-color: var.$border-color;
+  box-shadow: 0 20px 40px 0 rgb(0, 0, 0, 0.5);
   .container {
     display: flex;
     align-items: center;

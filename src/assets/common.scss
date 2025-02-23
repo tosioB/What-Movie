@@ -32,9 +32,203 @@ a {
   color: var.$font-color;
 }
 
+/* 전체 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 스크롤바 트랙 (배경) */
+::-webkit-scrollbar-track {
+  background: var.$background-color;
+  border-radius: 10px;
+}
+
+/* 스크롤바 핸들 (움직이는 부분) */
+::-webkit-scrollbar-thumb {
+  background: var.$sub-background-color;
+  border-radius: 10px;
+}
+
+.loading-screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: var.$background-color;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 9999;
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* 프로그래스 바 스타일 */
+  .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+  }
+
+  .progress {
+    height: 100%;
+    width: 0;
+    background-color: var.$main-color-green;
+    transition: width 0.1s ease-in-out;
+  }
+}
+
 .container {
   width: 100%;
   max-width: 128rem;
+  padding: 0 4rem;
   margin: 0 auto;
+  overflow: hidden;
   position: relative;
+}
+
+.section-area {
+  margin-top: 10rem;
+}
+
+.main-title {
+  margin-bottom: 4rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.movie-card {
+  position: relative;
+  .img-box {
+    display: block;
+    aspect-ratio: 2 / 3;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .detail-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 2.8rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    .title {
+      padding-bottom: 1.2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      word-break: keep-all;
+      border-bottom: 1px solid;
+      border-color: var.$border-color;
+    }
+    .overview {
+      flex: 1;
+      padding: 2rem 0;
+      font-size: 1.6rem;
+      line-height: 1.5;
+      text-align: center;
+      word-break: keep-all;
+      overflow: hidden;
+      position: relative;
+      /* 페이드 효과 (아래에서 천천히 사라짐) */
+      mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 70%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 70%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      .no-overview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        height: 100%;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var.$fail-color;
+      }
+    }
+    .bottom-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1.2rem;
+      border-top: 1px solid;
+      border-color: var.$border-color;
+      .average {
+        padding-left: 2.2rem;
+
+        font-size: 1.8rem;
+        font-weight: 500;
+        background: url("/images/star.svg") no-repeat 0 50%;
+      }
+    }
+    &:hover {
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+  }
+}
+
+.swiper {
+  .swiper-nav-btn {
+    width: 4rem;
+    height: 4rem;
+    font-size: 0;
+    background: #fff no-repeat 50% 50%;
+    border-radius: 50%;
+    opacity: 0.3;
+    &.swiper-button-prev {
+      background-image: url("/images/swiper_nav_prev.svg");
+    }
+    &.swiper-button-next {
+      background-image: url("/images/swiper_nav_next.svg");
+    }
+    &:hover {
+      opacity: 1;
+    }
+    &::after {
+      display: none;
+    }
+    &.swiper-button-disabled {
+      pointer-events: visible;
+    }
+  }
+
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: var.$main-color-green;
+      border-radius: 0.6rem;
+      opacity: 1;
+      transition: all 0.3s;
+    }
+    .swiper-pagination-bullet-active {
+      width: 2rem;
+      background-color: var.$sub-color-orange;
+      transition: all 0.3s;
+    }
+  }
 }

@@ -1,38 +1,51 @@
-import useGetNowPlayingMovies from "../hooks/useGetNowPlayingMovies";
 import "@/assets/home.scss";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-import MovieCard from "../components/MovieCard";
-import { Movie } from "../types/movie";
+import MovieTopRated from "../components/Home/MovieTopRated";
+import MovieNowPlaying from "../components/Home/MovieNowPlaying";
+import MoviePopular from "../components/Home/MoviePopular";
+import LoadingScreen from "../components/LoadingScreen";
+import { useEffect, useState } from "react";
+
+const formatDate = (date: Date) => {
+  const formatted = date.toLocaleString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true // 12시간제 사용
+  });
+
+  return formatted.replace(":", "시 ") + "분"; // "2:10" → "2시 10분"
+};
 
 const Home = () => {
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useGetNowPlayingMovies();
-
-  const { ref, inView } = useInView();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (inView && hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
-    }
-  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage, isLoading]);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  });
 
   return (
     <div className="home-page">
-      <div className="container">
-        <div>개봉예정</div>
-        <div>현재 시간</div>
-        <div className="now-playing-movies">상영중</div>
-        <div className="movie-archive">
-          {data?.pages.map((page) =>
-            page.results.map((movie: Movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))
-          )}
+      <LoadingScreen isLoading={isLoading} />
+      {/* 메인슬라이드 - 평점 높은 영화 */}
+      <MovieTopRated />
 
-          {/* 무한스크롤 감지 영역 */}
-          <div ref={ref} className="load-more"></div>
+      <div className="container">
+        {/* 현재 날짜 기준 */}
+        <div className="current-date">
+          <span>{formatDate(new Date())} 기준</span>
         </div>
+
+        {/* 현재 상영중인 영화 */}
+        <MovieNowPlaying />
+
+        {/* 인기 영화 */}
+        <MoviePopular />
       </div>
     </div>
   );

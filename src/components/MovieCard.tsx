@@ -13,8 +13,8 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         <span className="img-box">
           <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
         </span>
-        <div className="movie-detail">
-          <h3 className="title">{movie.title}</h3>
+        <div className="detail-box">
+          <h4 className="title">{movie.title}</h4>
           <div className="overview">
             {movie.overview ? (
               movie.overview

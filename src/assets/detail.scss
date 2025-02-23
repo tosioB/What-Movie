@@ -1,0 +1,12 @@
+@use "@/assets/_variables.scss" as var;
+
+.detail-page {
+  .detail-box {
+    .bg-img {
+      display: block;
+      width: 100%;
+      height: calc(100vh - var.$header-height);
+      filter: blur(2px) brightness(30%);
+    }
+  }
+}
