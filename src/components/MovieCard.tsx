@@ -9,7 +9,7 @@ interface MovieCardProps {
 const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <div className="movie-card">
-      <Link to="/detail">
+      <Link to="/detail" key={movie.id} state={movie}>
         <span className="img-box">
           <img src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
         </span>
@@ -21,7 +21,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             ) : (
               <div className="no-overview">
                 <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />
-                <p>영화 설명이 없습니다.연결 재 테스트</p>
+                <p>영화 설명이 없습니다.</p>
               </div>
             )}
           </div>

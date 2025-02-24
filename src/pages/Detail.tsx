@@ -1,27 +1,26 @@
-import { useLocation } from "react-router-dom";
-import { IMG_URL } from "../util/config";
 import "@/assets/detail.scss";
+import DetailWrap from "../components/Detail/DetailWrap";
+import { useLocation } from "react-router-dom";
+import LoadingScreen from "../components/LoadingScreen";
+import useLoadingScreen from "../hooks/useLoadingScreen";
+import ActorWrap from "../components/Detail/ActorWrap";
+import TrailerWrap from "../components/Detail/TrailerWrap";
 
 const Detail = () => {
+  const isLoading = useLoadingScreen();
   const location = useLocation();
   const movie = location.state;
 
   return (
     <div className="detail-page">
-      <div className="detail-box">
-        <img
-          src={`${IMG_URL}${movie.backdrop_path}`}
-          alt={movie.title}
-          className="bg-img"
-        />
-      </div>
+      <LoadingScreen isLoading={isLoading} />
+      <DetailWrap movie={movie} />
       <div className="container">
-        <div className="actor-wrap section-area">
-          <h3 className="main-title">출연 배우</h3>
-        </div>
-        <div className="trailer section-area">
-          <h3 className="main-title">트레일러</h3>
-        </div>
+        {/* 출연 배우 */}
+        <ActorWrap movieId={movie.id} />
+
+        {/* 트레일러 */}
+        <TrailerWrap movieId={movie.id} />
       </div>
     </div>
   );

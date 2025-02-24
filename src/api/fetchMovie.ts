@@ -2,7 +2,7 @@ import { API_KEY, BASE_URL } from "../util/config";
 
 export const fetchMovies = async (category: string, page: number = 1) => {
   const response = await fetch(
-    `${BASE_URL}/movie/${category}?language=ko&page=${page}`,
+    `${BASE_URL}/${category}?language=ko&page=${page}`,
     {
       headers: {
         Authorization: `Bearer ${API_KEY}`

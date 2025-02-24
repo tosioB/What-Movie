@@ -3,7 +3,7 @@ import MovieTopRated from "../components/Home/MovieTopRated";
 import MovieNowPlaying from "../components/Home/MovieNowPlaying";
 import MoviePopular from "../components/Home/MoviePopular";
 import LoadingScreen from "../components/LoadingScreen";
-import { useEffect, useState } from "react";
+import useLoadingScreen from "../hooks/useLoadingScreen";
 
 const formatDate = (date: Date) => {
   const formatted = date.toLocaleString("ko-KR", {
@@ -19,15 +19,7 @@ const formatDate = (date: Date) => {
 };
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  });
+  const isLoading = useLoadingScreen();
 
   return (
     <div className="home-page">

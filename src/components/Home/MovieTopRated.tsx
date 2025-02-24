@@ -7,6 +7,7 @@ import { IMG_URL } from "../../util/config";
 
 const MovieTopRated = () => {
   const { data: topRatedMovies } = useGetMovies("top_rated");
+  console.log(topRatedMovies);
 
   return (
     <div className="movie-top-rated-wrap">
