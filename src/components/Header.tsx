@@ -20,7 +20,7 @@ const Header = () => {
                 <Link to="/LikeMovie">내가 좋아하는 영화</Link>
               </li>
               <li>
-                <Link to="/SearchMovie">영화 찾아보기</Link>
+                <Link to="/Search">영화 찾아보기</Link>
               </li>
             </ul>
           </nav>

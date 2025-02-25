@@ -1,25 +1,25 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Movie } from "../../types/movie";
-import { EffectFade, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import useGetMovies from "../../hooks/useGetMovie";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "../../util/config";
 
 const MovieTopRated = () => {
   const { data: topRatedMovies } = useGetMovies("top_rated");
-  console.log(topRatedMovies);
 
   return (
     <div className="movie-top-rated-wrap">
       <Swiper
-        modules={[Navigation, Pagination, EffectFade]}
+        modules={[Navigation, Pagination]}
+        // modules={[Navigation, Pagination, EffectFade]}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         }}
         pagination={{ clickable: true }}
         loop={true}
-        effect="fade"
+        // effect="fade"
       >
         {topRatedMovies?.results?.map((movie: Movie) => {
           return (

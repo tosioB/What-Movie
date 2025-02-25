@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import LikeMovie from "./pages/LikeMovie";
-import SearchMovie from "./pages/SearchMovie";
 import Detail from "./pages/Detail";
+import Search from "./pages/Search";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import "swiper/css";
@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/LikeMovie" element={<LikeMovie />} />
-        <Route path="/SearchMovie" element={<SearchMovie />} />
+        <Route path="/Search" element={<Search />} />
         <Route path="/Detail" element={<Detail />} />
 
         <Route path="/Login" element={<Login />} />
