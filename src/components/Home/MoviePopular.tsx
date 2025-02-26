@@ -3,6 +3,7 @@ import useGetPopularMovies from "../../hooks/useGetPopularMovies";
 import { useInView } from "react-intersection-observer";
 import MovieCard from "../MovieCard";
 import { Movie } from "../../types/movie";
+import MainTitle from "../common/MainTitle";
 
 const MoviePopular = () => {
   const {
@@ -29,7 +30,7 @@ const MoviePopular = () => {
 
   return (
     <div className="movie-popular-wrap section-area">
-      <h3 className="main-title">인기 영화</h3>
+      <MainTitle title="인기 영화" />
       <div className="movie-container">
         {popularMovies?.pages.map((page) =>
           page.results.map((movie: Movie) => (

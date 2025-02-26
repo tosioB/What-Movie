@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { API_KEY, BASE_URL } from "../../util/config";
+import MainTitle from "../common/MainTitle";
 
 interface TrailerWrapProps {
   movieId: number;
@@ -38,7 +39,7 @@ const TrailerWrap = ({ movieId }: TrailerWrapProps) => {
 
   return (
     <div className="trailer-wrap section-area">
-      <h3 className="main-title">트레일러</h3>
+      <MainTitle title="트레일러" />
       <div className="trailer">
         {trailer ? (
           <iframe

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import LikeMovie from "./pages/LikeMovie";
@@ -13,8 +13,12 @@ import "swiper/css/effect-fade";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
+  const location = useLocation();
+  const isAuthPage =
+    location.pathname === "/Login" || location.pathname === "/SignUp";
+
   return (
-    <>
+    <div className={`${isAuthPage ? "" : "page-bottom-padding"}`}>
       <ScrollToTop />
       <Header />
       <Routes>
@@ -26,7 +30,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

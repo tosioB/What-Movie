@@ -6,6 +6,7 @@ import { Movie } from "../types/movie";
 import { useLocation, useNavigate } from "react-router-dom";
 import SearchInpBox from "../components/Search/SearchInpBox";
 import SearchResult from "../components/Search/SearchResult";
+import MainTitle from "../components/common/MainTitle";
 
 const fetchSearchMovies = async ({
   query,
@@ -76,9 +77,11 @@ const Search = () => {
         <SearchInpBox onSearch={handleSearch} initialQuery={initialQuery} />
 
         {/* 타이틀 영역 */}
-        <h3 className="main-title">
-          {searchQuery ? `검색결과: ${searchQuery}` : "아무것도 검색되지 않음"}
-        </h3>
+        <MainTitle
+          title={
+            searchQuery ? `검색결과: ${searchQuery}` : "아무것도 검색되지 않음"
+          }
+        />
 
         {/* 검색 결과 영역 */}
         <SearchResult

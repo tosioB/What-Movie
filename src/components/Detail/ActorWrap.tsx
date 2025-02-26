@@ -2,6 +2,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { API_KEY, BASE_URL, IMG_URL } from "../../util/config";
 import { useEffect, useState } from "react";
+import MainTitle from "../common/MainTitle";
 
 interface ActorWrapProps {
   movieId: number;
@@ -38,7 +39,7 @@ const ActorWrap = ({ movieId }: ActorWrapProps) => {
 
   return (
     <div className="actor-wrap section-area">
-      <h3 className="main-title">출연 배우</h3>
+      <MainTitle title="출연 배우" />
       {actors.length === 0 ? (
         <div className="no-actor">
           <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />

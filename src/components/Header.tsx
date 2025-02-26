@@ -29,7 +29,7 @@ const Header = () => {
           <Button
             text="로그인"
             onClick={() => {
-              navigate("/login");
+              navigate("/Login");
             }}
           />
         </div>

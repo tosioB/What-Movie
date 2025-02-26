@@ -1,0 +1,71 @@
+@use "@/assets/_variables.scss" as var;
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  padding: 10rem 4rem;
+  .login-wrap {
+    width: 100%;
+    max-width: 52rem;
+    padding: 10rem;
+    background-color: var.$bg-color-474747;
+    border: 1px solid;
+    border-color: var.$bd-color-e1e1e1;
+    border-radius: 2rem;
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+    .user-join-list {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.6rem;
+      > li {
+        padding-right: 0.9rem;
+        margin-right: 0.8rem;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 1.2rem;
+          background-color: var.$bd-color-e1e1e1;
+        }
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+    .social-btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding-top: 4rem;
+      margin-top: 4rem;
+      border-top: 1px solid;
+      border-color: var.$bd-color-e1e1e1;
+      .com-btn {
+        > span {
+          padding-left: 2.4rem;
+          background: no-repeat 0 50% / 1.8rem;
+        }
+        &.naver-btn {
+          > span {
+            background-image: url("/images/naver.svg");
+          }
+        }
+        &.kakao-btn {
+          > span {
+            background-image: url("/images/kakao.svg");
+          }
+        }
+      }
+    }
+  }
+}

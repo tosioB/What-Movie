@@ -3,13 +3,14 @@ import MovieCard from "../MovieCard";
 import { Movie } from "../../types/movie";
 import { Navigation } from "swiper/modules";
 import useGetMovies from "../../hooks/useGetMovie";
+import MainTitle from "../common/MainTitle";
 
 const MovieNowPlaying = () => {
   const { data: nowPlayingMovies } = useGetMovies("now_playing");
 
   return (
     <div className="movie-now-playing-wrap section-area">
-      <h3 className="main-title">상영중인 영화</h3>
+      <MainTitle title="상영중인 영화" />
       <Swiper
         modules={[Navigation]}
         navigation={{

@@ -1,0 +1,87 @@
+@use "@/assets/_variables.scss" as var;
+
+.sign-up-page {
+  display: flex;
+  justify-content: center;
+  padding: 10rem 4rem;
+  .sign-up-wrap {
+    width: 100%;
+    max-width: 52rem;
+    padding: 6rem 10rem;
+    background-color: var.$bg-color-474747;
+    border: 1px solid;
+    border-color: var.$bd-color-e1e1e1;
+    border-radius: 2rem;
+    .sign-up-form {
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+      .inp-box {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        position: relative;
+        .message {
+          position: absolute;
+          left: 0;
+          top: calc(100% + 0.4rem);
+          font-size: 1.2rem;
+          &.success {
+            color: var.$success-color;
+          }
+          &.failed {
+            color: var.$failed-color;
+          }
+        }
+      }
+      .certification-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        .mobile-carriers-list {
+          border: 1px solid;
+          border-color: var.$bd-color-e1e1e1;
+          border-radius: 0.4rem;
+          overflow: hidden;
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            tr {
+              td {
+                border-right: 1px solid;
+                border-top: 1px solid;
+                border-color: var.$bd-color-e1e1e1;
+                &:last-child {
+                  border-right: none;
+                }
+                input[type="radio"] {
+                  display: none;
+                }
+                label {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 3.2rem;
+                  font-size: 1.4rem;
+                  cursor: pointer;
+                  &:hover {
+                    background-color: var.$main-color;
+                  }
+                }
+                input[type="radio"]:checked + label {
+                  background-color: var.$main-color;
+                }
+              }
+              &:first-child {
+                td {
+                  border-top: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
