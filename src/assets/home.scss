@@ -4,42 +4,54 @@
   // 메인슬라이드 - 평점 높은 영화
   .movie-top-rated-wrap {
     position: relative;
-    .swiper-slide {
-      > a {
-        display: block;
-      }
-      .img-box {
-        display: block;
-        > img {
-          width: 100%;
-          filter: brightness(0.5);
+    .swiper {
+      .swiper-slide {
+        > a {
+          display: block;
         }
-      }
-      .container {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1;
-        .detail-box {
-          width: 40rem;
-          word-break: keep-all;
-          .title {
-            font-size: 4rem;
-            font-weight: 900;
+        .img-box {
+          display: block;
+          > img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            filter: brightness(0.5);
           }
-          .overview {
-            display: -webkit-box;
-            margin-top: 2rem;
-            font-size: 2rem;
-            font-weight: 400;
-            line-height: 1.5;
+        }
+        .container {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1;
+          .detail-box {
+            width: 40rem;
+            padding-left: 4rem;
             word-break: keep-all;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            .title {
+              font-size: 4rem;
+              font-weight: 700;
+            }
+            .overview {
+              display: -webkit-box;
+              margin-top: 2rem;
+              font-size: 2rem;
+              font-weight: 400;
+              line-height: 1.5;
+              word-break: keep-all;
+              -webkit-line-clamp: 5;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+            }
           }
         }
+      }
+      .swiper-pagination {
+        bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        justify-content: center;
+        padding: 0 2rem;
       }
     }
   }
@@ -49,15 +61,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.8rem;
     height: 8rem;
     border-bottom: 1px solid;
     border-color: var.$bd-color-e1e1e1;
+    .clock-icon {
+      height: 2.8rem;
+    }
     > span {
       display: inline-block;
-      padding: 3.6rem;
       font-size: 2rem;
       font-weight: 600;
-      background: url("/images/clock.svg") no-repeat 0 50%;
     }
   }
 
@@ -86,6 +100,95 @@
       .load-more {
         width: 100%;
         height: 10rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-page {
+    .movie-popular-wrap {
+      .movie-container {
+        .movie-card {
+          width: calc((100% - 2 * 4rem) / 3);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    .movie-top-rated-wrap {
+      position: relative;
+      .swiper {
+        .swiper-slide {
+          .container {
+            .detail-box {
+              padding-left: 6rem;
+              .overview {
+                -webkit-line-clamp: 3;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .movie-popular-wrap {
+      .movie-container {
+        .movie-card {
+          width: calc((100% - 4rem) / 2);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .home-page {
+    .movie-top-rated-wrap {
+      .swiper {
+        .swiper-slide {
+          .img-box {
+            display: block;
+            > img {
+              aspect-ratio: 640 / 917;
+            }
+          }
+          .container {
+            .detail-box {
+              .title {
+                font-size: 3.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .home-page {
+    .movie-top-rated-wrap {
+      position: relative;
+      .swiper {
+        .swiper-slide {
+          .container {
+            .detail-box {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .movie-popular-wrap {
+      .movie-container {
+        .movie-card {
+          width: 100%;
+        }
       }
     }
   }

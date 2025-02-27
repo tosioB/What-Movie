@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Movie } from "../types/movie";
 import { IMG_URL } from "../util/config";
+import NoData from "./NoData";
 
 interface MovieCardProps {
   movie: Movie;
@@ -19,10 +20,12 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             {movie.overview ? (
               movie.overview
             ) : (
-              <div className="no-overview">
-                <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />
-                <p>영화 설명이 없습니다.</p>
-              </div>
+              <NoData
+                data="영화 설명"
+                gap="0.8rem"
+                height="100%"
+                fontSize="1.6rem"
+              />
             )}
           </div>
           <div className="bottom-box">

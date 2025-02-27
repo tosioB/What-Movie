@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_KEY, BASE_URL } from "../../util/config";
 import MainTitle from "../common/MainTitle";
+import NoData from "../NoData";
 
 interface TrailerWrapProps {
   movieId: number;
@@ -52,10 +53,13 @@ const TrailerWrap = ({ movieId }: TrailerWrapProps) => {
             allowFullScreen
           ></iframe>
         ) : (
-          <div className="no-trailer">
-            <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />
-            <p>트레일러가 없습니다.</p>
-          </div>
+          <NoData
+            data="트레일러"
+            gap="2rem"
+            height="30rem"
+            fontSize="2.4rem"
+            isBorder={true}
+          />
         )}
       </div>
     </div>

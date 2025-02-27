@@ -4,32 +4,40 @@ import { Navigation, Pagination } from "swiper/modules";
 import useGetMovies from "../../hooks/useGetMovie";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "../../util/config";
+import { useEffect, useState } from "react";
 
 const MovieTopRated = () => {
   const { data: topRatedMovies } = useGetMovies("top_rated");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 520);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 520);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="movie-top-rated-wrap">
       <Swiper
         modules={[Navigation, Pagination]}
-        // modules={[Navigation, Pagination, EffectFade]}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         }}
         pagination={{ clickable: true }}
         loop={true}
-        // effect="fade"
       >
         {topRatedMovies?.results?.map((movie: Movie) => {
+          const imagePath = isMobile ? movie.poster_path : movie.backdrop_path;
+
           return (
             <SwiperSlide key={movie.id}>
               <Link to="/detail" key={movie.id} state={movie}>
                 <span className="img-box">
-                  <img
-                    src={`${IMG_URL}${movie.backdrop_path}`}
-                    alt={movie.title}
-                  />
+                  <img src={`${IMG_URL}${imagePath}`} alt={movie.title} />
                 </span>
                 <div className="container">
                   <div className="detail-box">

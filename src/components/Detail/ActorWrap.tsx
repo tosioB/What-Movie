@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { API_KEY, BASE_URL, IMG_URL } from "../../util/config";
 import { useEffect, useState } from "react";
 import MainTitle from "../common/MainTitle";
+import NoData from "../NoData";
 
 interface ActorWrapProps {
   movieId: number;
@@ -41,10 +42,13 @@ const ActorWrap = ({ movieId }: ActorWrapProps) => {
     <div className="actor-wrap section-area">
       <MainTitle title="출연 배우" />
       {actors.length === 0 ? (
-        <div className="no-actor">
-          <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />
-          <p>출연 배우 정보가 없습니다.</p>
-        </div>
+        <NoData
+          data="출연 배우 정보"
+          gap="2rem"
+          height="24rem"
+          fontSize="2.4rem"
+          isBorder={true}
+        />
       ) : (
         <Swiper
           modules={[Navigation]}
@@ -52,9 +56,27 @@ const ActorWrap = ({ movieId }: ActorWrapProps) => {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev"
           }}
-          spaceBetween={40}
-          slidesPerView={5}
+          spaceBetween={32}
+          slidesPerView={2}
           className="actor-swiper"
+          breakpoints={{
+            520: {
+              spaceBetween: 40,
+              slidesPerView: 3
+            },
+            768: {
+              spaceBetween: 40,
+              slidesPerView: 4
+            },
+            1024: {
+              spaceBetween: 40,
+              slidesPerView: 5
+            },
+            1200: {
+              spaceBetween: 40,
+              slidesPerView: 6
+            }
+          }}
         >
           {actors.map((actor: Actor) => {
             return (
@@ -65,10 +87,12 @@ const ActorWrap = ({ movieId }: ActorWrapProps) => {
                     className="actor-profile-img"
                   />
                 ) : (
-                  <div className="no-profile">
-                    <img src="/images/emoji_sad.svg" alt="이모지 - 슬픈 얼굴" />
-                    <p>프로필 사진이 없습니다.</p>
-                  </div>
+                  <NoData
+                    data="프로필 사진"
+                    gap="0.8rem"
+                    height="100%"
+                    fontSize="1.6rem"
+                  />
                 )}
 
                 <p className="actor-name">{actor.original_name}</p>

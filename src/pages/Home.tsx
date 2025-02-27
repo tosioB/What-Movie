@@ -30,6 +30,7 @@ const Home = () => {
       <div className="container">
         {/* 현재 날짜 기준 */}
         <div className="current-date">
+          <img src="/images/clock.svg" className="clock-icon" />
           <span>{formatDate(new Date())} 기준</span>
         </div>
 

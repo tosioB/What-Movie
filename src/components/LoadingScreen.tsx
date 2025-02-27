@@ -31,7 +31,7 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
         <div className="progress" style={{ width: `${progress}%` }}></div>
       </div>
 
-      <img src="/images/logo.svg" alt="로고" />
+      <img src="/images/logo.svg" alt="로고" className="logo" />
     </div>
   );
 };

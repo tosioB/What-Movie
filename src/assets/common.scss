@@ -8,6 +8,7 @@
 
 html,
 body {
+  min-width: 320px;
   height: 100%;
   font-family: "Pretendard", sans-serif;
   font-size: 62.5%;
@@ -97,13 +98,15 @@ a {
     height: 5px;
     background-color: rgba(255, 255, 255, 0.2);
     overflow: hidden;
+    .progress {
+      height: 100%;
+      width: 0;
+      background-color: var.$main-color;
+      transition: width 0.1s ease-in-out;
+    }
   }
-
-  .progress {
-    height: 100%;
-    width: 0;
-    background-color: var.$main-color;
-    transition: width 0.1s ease-in-out;
+  .logo {
+    height: 8rem;
   }
 }
 
@@ -178,17 +181,6 @@ a {
         rgba(0, 0, 0, 1) 70%,
         rgba(0, 0, 0, 0) 100%
       );
-      .no-overview {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-        height: 100%;
-        font-size: 2rem;
-        font-weight: 600;
-        color: var.$failed-color;
-      }
     }
     .bottom-box {
       display: flex;
@@ -217,7 +209,7 @@ a {
     width: 4rem;
     height: 4rem;
     font-size: 0;
-    background: #fff no-repeat 50% 50%;
+    background: #fff no-repeat 50% 50% / 1.5rem 2.4rem;
     border-radius: 50%;
     opacity: 0.3;
     &.swiper-button-prev {
@@ -288,6 +280,21 @@ a {
   }
 }
 
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.2rem;
+  p {
+    font-weight: 500;
+    text-align: center;
+    word-break: keep-all;
+    color: #fff;
+  }
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -298,4 +305,15 @@ input[type="number"]::-webkit-inner-spin-button {
 /* 파이어폭스에서의 초기화 방법 */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 3%;
+  }
+
+  .main-title {
+    margin-bottom: 2rem;
+    font-size: 2.8rem;
+  }
 }
