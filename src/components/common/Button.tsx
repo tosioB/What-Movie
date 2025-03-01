@@ -1,24 +1,29 @@
 type ButtonProps = {
+  type?: "button" | "submit";
   text: string;
   width?: string;
   height?: string;
   backgroundColor?: string;
   color?: string;
   className?: string;
-  onClick?: () => void;
+  disabled?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button = ({
+  type = "button",
   text,
   width,
   height,
   backgroundColor,
   color,
   className = "",
+  disabled = false,
   onClick
 }: ButtonProps) => {
   return (
     <button
+      type={type}
       className={`com-btn ${className}`}
       style={{
         width,
@@ -26,6 +31,7 @@ const Button = ({
         backgroundColor,
         color
       }}
+      disabled={disabled}
       onClick={onClick}
     >
       <span>{text}</span>

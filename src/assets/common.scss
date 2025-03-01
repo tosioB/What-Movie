@@ -22,11 +22,11 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 47%;
-  }
-}
+// @media (max-width: 768px) {
+//   html {
+//     font-size: 47%;
+//   }
+// }
 
 #root {
   height: 100%;
@@ -256,6 +256,27 @@ a {
   background-color: var.$main-color;
   border-radius: 0.4rem;
   color: var.$font-color-ffffff;
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .com-inp {
@@ -263,7 +284,7 @@ a {
   height: 4rem;
   width: 100%;
   padding: 0 1.2rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   background-color: var.$bg-color-474747;
   border: 1px solid;
   border-color: var.$bd-color-e1e1e1;
@@ -277,6 +298,20 @@ a {
     border-color: var.$bg-color-303030;
     color: #000;
     outline: none;
+  }
+  // 🔴 유효성 검사 실패 (aria-invalid="true")
+  &[aria-invalid="true"] {
+    border-color: red;
+    background-color: #ffe6e6;
+    color: #000;
+    animation: shake 0.3s ease-in-out;
+  }
+
+  // ✅ 유효성 검사 성공 (aria-invalid="false")
+  &[aria-invalid="false"] {
+    border-color: var.$main-color;
+    background-color: #707e70;
+    color: #fff;
   }
 }
 

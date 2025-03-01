@@ -9,7 +9,6 @@ import SignUp from "./pages/SignUp";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-fade";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {

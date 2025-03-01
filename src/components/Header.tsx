@@ -32,11 +32,11 @@ const Header = () => {
               </button>
             </span>
             <ul>
-              <li>
+              {/* <li>
                 <Link to="/LikeMovie" onClick={handleCloseMenu}>
                   내가 좋아하는 영화
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/Search" onClick={handleCloseMenu}>
                   영화 찾아보기

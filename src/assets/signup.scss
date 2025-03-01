@@ -15,35 +15,22 @@
     .sign-up-form {
       display: flex;
       flex-direction: column;
-      gap: 3.2rem;
+      gap: 2.8rem;
       .inp-box {
         display: flex;
         align-items: center;
         gap: 0.8rem;
         position: relative;
-        .message {
-          position: absolute;
-          left: 0;
-          top: calc(100% + 0.4rem);
-          font-size: 1.2rem;
-          &.success {
-            color: var.$success-color;
-          }
-          &.failed {
-            color: var.$failed-color;
-          }
-        }
       }
       .certification-wrap {
         display: flex;
         flex-direction: column;
-        gap: 1.2rem;
-
+        gap: 2.8rem;
         .mobile-carriers-list {
           border: 1px solid;
           border-color: var.$bd-color-e1e1e1;
           border-radius: 0.4rem;
-          overflow: hidden;
+          position: relative;
           table {
             width: 100%;
             border-collapse: collapse;
@@ -82,6 +69,35 @@
           }
         }
       }
+      .message {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 0.4rem);
+        font-size: 1.2rem;
+        &.success {
+          color: var.$success-color;
+        }
+        &.failed {
+          color: var.$failed-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sign-up-page {
+    padding: 8rem 5%;
+    .sign-up-wrap {
+      padding: 6rem;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .sign-up-page {
+    .sign-up-wrap {
+      padding: 3.2rem;
     }
   }
 }

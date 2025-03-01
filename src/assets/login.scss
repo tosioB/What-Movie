@@ -69,3 +69,20 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .login-page {
+    padding: 8rem 5%;
+    .login-wrap {
+      padding: 6rem;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .login-page {
+    .login-wrap {
+      padding: 3.2rem;
+    }
+  }
+}
